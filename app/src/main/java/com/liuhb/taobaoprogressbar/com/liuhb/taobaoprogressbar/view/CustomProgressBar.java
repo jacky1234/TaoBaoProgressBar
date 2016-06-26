@@ -83,8 +83,7 @@ public class CustomProgressBar extends View {
         this(context, attrs, 0);
     }
 
-    public CustomProgressBar(Context context, AttributeSet attrs,
-                             int defStyleAttr) {
+    public CustomProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         TypedArray a = context.obtainStyledAttributes(attrs,
@@ -117,7 +116,6 @@ public class CustomProgressBar extends View {
     }
 
     private void init() {
-
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         mTextBounds = new Rect();
@@ -139,14 +137,12 @@ public class CustomProgressBar extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         drawBorder(canvas);
         drawProgress(canvas);
         if (mIsShowDesc)  drawProgressDesc(canvas);
     }
 
     private void drawBorder(Canvas canvas) {
-
         mPaint.reset();
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.MITER);
@@ -180,7 +176,6 @@ public class CustomProgressBar extends View {
     }
 
     private void drawProgress(Canvas canvas) {
-
         mPaint.reset();
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setAntiAlias(true);
@@ -199,7 +194,6 @@ public class CustomProgressBar extends View {
         float scale2 = (mProgress * 1.f / mMax)
                 / ((right - mRadius) * 1.f / (right - left));
         if (scale <= 1) {
-
             float a = scale * mRadius;
             double angle = Math.acos((mRadius - a) / mRadius);
             path.arcTo(new RectF(left, top, left + 2 * mRadius, top + 2
@@ -215,7 +209,6 @@ public class CustomProgressBar extends View {
             path.close();
             canvas.drawPath(path, mPaint);
         } else if (scale2 <= 1) {
-
             path.arcTo(new RectF(left, top, left + 2 * mRadius, top + 2
                     * mRadius), 180, 90);
             path.lineTo(left + (mProgress * 1.f / mMax) * (right - left), top);
@@ -227,9 +220,7 @@ public class CustomProgressBar extends View {
             path.close();
 
             canvas.drawPath(path, mPaint);
-
         } else {
-
             float a = (mProgress * 1.f / mMax) * (right - left)
                     - (right - mRadius);
             double angle = Math.asin(a / mRadius);
@@ -250,37 +241,30 @@ public class CustomProgressBar extends View {
             path.close();
 
             canvas.drawPath(path, mPaint);
-
         }
-
     }
 
     private void drawProgressDesc(Canvas canvas) {
-
         String finalProgressDesc = mProgressDesc + " " + mProgress + "/" + mMax;
         mTextPaint.getTextBounds(finalProgressDesc, 0,
                 finalProgressDesc.length(), mTextBounds);
 
         canvas.drawText(finalProgressDesc, (int) (mWidth / 2.0 - mTextBounds.width() / 2.0), (int) (mHeight / 2.0 - (mTextPaint.ascent() + mTextPaint.descent()) / 2.0f), mTextPaint);
-
     }
 
     public void setMaxProgress(int max) {
-
         mMax = max < 0 ? 0 : max;
         invalidateView();
 
     }
 
     private void setProgress(int progress) {
-
         mProgress = progress > mMax ? mMax : progress;
         invalidateView();
 
         if (mProgress>= mMax && mOnFinishedListener!=null) {
             mOnFinishedListener.onFinish();
         }
-
     }
 
     /**
@@ -289,7 +273,6 @@ public class CustomProgressBar extends View {
      */
     public int getMax() {
         return mMax ;
-
     }
 
     /**
@@ -297,7 +280,6 @@ public class CustomProgressBar extends View {
      * @return
      */
     public final int getProgress() {
-
         return  mProgress ;
     }
 
@@ -311,18 +293,7 @@ public class CustomProgressBar extends View {
      * @param progress
      */
     public void setCurProgress (final int progress) {
-
-        ObjectAnimator animator = ObjectAnimator.ofInt(this, "progress", progress).setDuration(1500);
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                if (mOnAnimationEndListener!=null) {
-                    mOnAnimationEndListener.onAnimationEnd();
-                }
-            }
-        });
-        animator.start();
+        setCurProgress(progress,1500);
     }
 
     /**
@@ -331,7 +302,6 @@ public class CustomProgressBar extends View {
      * @param duration 动画时长
      */
     public void setCurProgress (final int progress,long duration) {
-
         ObjectAnimator animator = ObjectAnimator.ofInt(this, "progress", progress).setDuration(duration);
         animator.addListener(new AnimatorListenerAdapter() {
             @Override

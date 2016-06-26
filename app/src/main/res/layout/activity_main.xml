@@ -11,18 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
-        app:progress="20"
+        app:progress="2"
         app:max="100"
-        app:progressRadius="8dp"
+        app:progressRadius="10dp"
         app:progressDesc="已售"/>
 
     <com.liuhb.taobaoprogressbar.com.liuhb.taobaoprogressbar.view.CustomProgressBar
-        android:id="@+id/cpb_progresbar"
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        app:borderWidth="2dp"
-        app:progressRadius="14dp"/>
+    android:id="@+id/cpb_progresbar"
+    android:layout_marginTop="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    app:borderWidth="2dp"
+    app:progressRadius="14dp"/>
 
     <com.liuhb.taobaoprogressbar.com.liuhb.taobaoprogressbar.view.CustomProgressBar
         android:id="@+id/cpb_progresbar2"
@@ -30,7 +30,7 @@
         android:layout_width="120dp"
         android:layout_height="10dp"
         app:borderWidth="2dp"
-        app:progressRadius="4dp"
+        app:progressRadius="0dp"
         app:isShowDesc="false"/>
 
 </LinearLayout>
