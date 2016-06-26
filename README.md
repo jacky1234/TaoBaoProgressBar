@@ -4,7 +4,7 @@
 有进度条加载动画
 
 ###Snapshot
-![snapshot](https://github.com/liuhuibin/TaoBaoProgressBar/blob/master/.raw/snapshot3.gif)
+![snapshot](https://github.com/jacky1234/TaoBaoProgressBar/blob/master/.raw/demo.gif)
 
 ##Usage
 
